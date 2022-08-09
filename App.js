@@ -11,6 +11,8 @@ import MealDetailSreen from './screens/MealDetailsScreen';
 import categoryMealsScreen from "./screens/CategoryMealsScreen";
 import { AntDesign } from '@expo/vector-icons';
 import FavoriteScreen from "./screens/FavoriteScreen";
+import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 
 const fetchFonts = () => {
@@ -78,13 +80,36 @@ const Meals = () => {
 const TabFunction = () => {
     return (
         <NavigationContainer>
-            <Tab.Navigator>
+            <Tab.Navigator
+                screenOptions={({ route }) => ({
+                    tabBarIcon: () => {
+                        if (route.name === "Meals") {
+                            return <Ionicons name="ios-restaurant-sharp" size={24} color="black" />
+                        } else if (route.name === "Favorite") {
+                            return <MaterialIcons name="favorite-outline" size={24} color="black" />
+                        }
+                    },
+                    tabBarActiveTintColor: "tomato",
+                    tabBarInactiveTintColor: "black",
+                    tabBarStyle: {
+                        backgroundColor: "#6495ed"
+                    }
+                })}
+            >
                 <Tab.Screen options={{
                     headerShown: false,
                 }} name='Meals' component={Meals} />
                 <Tab.Screen options={{
-                    headerShown: false,
-                }} name='Faverite' component={FavoriteScreen} />
+                    headerShown: true,
+                    headerStyle: {
+                        backgroundColor: "#6495ed"
+                    },
+                    headerTintColor: "#fff",
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        fontWeight: "bold"
+                    }
+                }} name='Favorite' component={FavoriteScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     )
