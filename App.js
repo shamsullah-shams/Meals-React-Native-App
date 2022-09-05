@@ -1,5 +1,5 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
 import CategoryScreen from './screens/CategoriesScreen';
 import * as Font from "expo-font";
 import React, { useState } from 'react';
@@ -13,6 +13,7 @@ import { AntDesign } from '@expo/vector-icons';
 import FavoriteScreen from "./screens/FavoriteScreen";
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import FiltersScreen from './screens/FiltersScreen';
 
 
 const fetchFonts = () => {
@@ -115,10 +116,7 @@ const TabFunction = () => {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-    },
-});
+
 
 
 export default TabFunction;
